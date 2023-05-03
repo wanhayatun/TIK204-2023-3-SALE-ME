@@ -1,3 +1,29 @@
+<?php 
+session_start();
+if (!isset($_SESSION["login"])) {
+	header("Location: loginpembeli.php");
+	exit;
+}
+require 'functions.php';
+
+// $perhalaman = 10;
+// $jumlah = count(query("SELECT * FROM data"));
+// $jumlahhalaman = ceil($jumlah / $perhalaman);
+// // if (isset($_GET["page"])) {
+// // $halaktif = $_GET["page"];
+// // } else {
+// // 	$halaktif = 1;
+// // }
+// $halaktif = (isset($_GET["page"])) ? $_GET["page"] : 1;
+// $awaldata = ($perhalaman * $halaktif) - $perhalaman;
+
+
+// $data = query("SELECT * FROM data ORDER BY tanggal ASC LIMIT $awaldata, $perhalaman");
+
+if (isset($_POST["search"])) {
+	$data = search($_POST["keyword"]);
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -31,20 +57,15 @@
 
             <div class="col-12 mb-3 mb-md-0 col-md-4 order-1 order-md-2 text-center">
               <div class="site-logo">
-                <a href="index.html" class="js-logo-clone"><strong>Sale Me</strong></a>
+                <a href="index.php" class="js-logo-clone"><strong>Sale Me</strong></a>
               </div>
             </div>
 
             <div class="col-6 col-md-4 order-3 order-md-3 text-right">
               <div class="site-top-icons">
                 <ul>
-                  <li><a href="loginpembeli.html"><span class="icon icon-person"></span></a></li>
-                  <li>
-                    <a href="cart.html" class="site-cart">
-                      <span class="icon icon-shopping_cart"></span>
-                      <span class="count">2</span>
-                    </a>
-                  </li> 
+                  <li><a href="loginpembeli.php"><span class="icon icon-person"></span></a></li>
+                  <li><a href="logout.php" class="btn btn-primary text-white">logout</a></li>
                   <li class="d-inline-block d-md-none ml-md-0"><a href="#" class="site-menu-toggle js-menu-toggle"><span class="icon-menu"></span></a></li>
                 </ul>
               </div> 
@@ -57,18 +78,18 @@
         <div class="container">
           <ul class="site-menu js-clone-nav d-none d-md-block">
             <li class="active">
-              <a href="index.html">Home</a>
+              <a href="index.php">Home</a>
             </li>
             <li>
-              <a href="about.html">About</a>
+              <a href="about.php">About</a>
             </li>
-            <li><a href="shop.html">Shop</a></li>
-            <li><a href="contact.html">Contact</a></li>
+            <!-- <li><a href="shop.php">Shop</a></li> -->
+            <li><a href="contact.php">Contact</a></li>
           </ul>
         </div>
       </nav>
     </header>
-
+<!-- 
     <div class="site-blocks-cover" style="background-image: url(images/cover1.jpg);" data-aos="fade">
       <div class="container">
         <div class="row align-items-start align-items-md-center justify-content-end">
@@ -77,13 +98,13 @@
             <div class="intro-text text-center text-md-left">
               <p class="mb-4 text-white">"Waste Less, Save More, Live More"</p>
               <p>
-                <a href="shop.html" class="btn btn-sm btn-primary">Shop Now</a>
+                <a href="shop.php" class="btn btn-sm btn-primary">Shop Now</a>
               </p>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
 <!-- 
     <div class="site-section site-blocks-1">
       <div class="container">
@@ -110,17 +131,88 @@
       </div>
     </div> -->
 
-    <div class="site-section site-blocks-2">
+    <div class="site-section site site-blocks-2">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-6 col-md-3 text-center" data-aos="fade-up">
+            <div class="card h-80">
+              <div class="card-body">
+                <img src="images/donat.jpg" alt="" class="img-fluid rounded">
+                <h5 class="card-title text-dark pt-2">Donat Yummy</h5>
+                <h6 class="card-text text-primary font-weight-bold">Rp. 30.000,00</h6>
+                <!-- <h6>expired in 3 days</h6> -->
+                <div class="text-center">
+                  <a href="checkout.php" class="btn btn-primary" role="button">Buy</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-3 text-center" data-aos="fade-up">
+            <div class="card h-80">
+              <div class="card-body">
+                <img src="images/Strawberry Mochi.jpg" alt="" class="img-fluid rounded">
+                <h5 class="card-title text-dark pt-2">Mochi</h5>
+                <h6 class="card-text text-primary font-weight-bold">Rp. 10.000,00</h6>
+                <div class="text-center">
+                  <a href="checkout.php" class="btn btn-primary" role="button">Buy</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-3 text-center" data-aos="fade-up">
+            <div class="card h-80">
+              <div class="card-body">
+                <img src="images/sop buah.JPG" alt="" class="img-fluid rounded">
+                <h5 class="card-title text-dark pt-2">Sop Buah</h5>
+                <h6 class="card-text text-primary font-weight-bold">Rp. 15.000,00</h6>
+                <div class="text-center">
+                  <a href="checkout.php" class="btn btn-primary" role="button">Buy</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-3 text-center" data-aos="fade-up">
+            <div class="card h-80">
+              <div class="card-body">
+                <img src="images/dessert.jpg" alt="" class="img-fluid rounded">
+                <h5 class="card-title text-dark pt-2">Strawberry Cake</h5>
+                <h6 class="card-text text-primary font-weight-bold">Rp. 25.000,00</h6>
+                <div class="text-center">
+                  <a href="checkout.php" class="btn btn-primary" role="button">Buy</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- pagination -->
+  </div>
+  <div class="row" data-aos="fade-up">
+    <div class="col-md-12 text-center pb-5">
+      <div class="site-block-27">
+        <ul>
+          <li class="pr-4"><a href="#">&lt;</a></li>
+          <li class="active"><span>1</span></li>
+          <li><a href="#">2</a></li>
+          <li><a href="#">3</a></li>
+          <li><a href="#">4</a></li>
+          <li><a href="#">5</a></li>
+          <li class="pl-4"><a href="#">&gt;</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <div class="site-section site-blocks-2 border-top">
       <div class="container">
         <div class="row">
           <div class="col-sm-6 col-md-6 col-lg-4 mb-4 mb-lg-0" data-aos="fade" data-aos-delay="">
             <a class="block-2-item" href="#">
               <figure class="image">
-<<<<<<< HEAD
-                <img src="images/foods categoriess.jpg" alt="" class="img-fluid">
-=======
                 <img src="images/categories-food.jpg" alt="" class="img-fluid">
->>>>>>> main
               </figure>
               <div class="text">
                 <span class="text-uppercase">Categories</span>
@@ -131,11 +223,7 @@
           <div class="col-sm-6 col-md-6 col-lg-4 mb-5 mb-lg-0" data-aos="fade" data-aos-delay="100">
             <a class="block-2-item" href="#">
               <figure class="image">
-<<<<<<< HEAD
-                <img src="images/drink categories.png" alt="" class="img-fluid">
-=======
                 <img src="images/categories-drink.jpg" alt="" class="img-fluid">
->>>>>>> main
               </figure>
               <div class="text">
                 <span class="text-uppercase">Categories</span>
@@ -146,11 +234,7 @@
           <div class="col-sm-6 col-md-6 col-lg-4 mb-5 mb-lg-0" data-aos="fade" data-aos-delay="200">
             <a class="block-2-item" href="#">
               <figure class="image">
-<<<<<<< HEAD
-                <img src="images/snacks categories.jpg" alt="" class="img-fluid">
-=======
                 <img src="images/categories-snack.jpg" alt="" class="img-fluid">
->>>>>>> main
               </figure>
               <div class="text">
                 <span class="text-uppercase">Categories</span>
@@ -244,7 +328,7 @@
           <div class="col-md-12">
             <p>
             <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-            Copyright &copy;<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>document.write(new Date().getFullYear());</script> All rights reserved | Made with <i class="icon-heart" aria-hidden="true"></i> by <a href="index.html" target="_blank" class="text-primary">Sale Me Team</a>
+            Copyright &copy;<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>document.write(new Date().getFullYear());</script> All rights reserved | Made with <i class="icon-heart" aria-hidden="true"></i> by <a href="index.php" target="_blank" class="text-primary">Sale Me Team</a>
             <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
             </p>
           </div>

@@ -31,20 +31,22 @@
 
             <div class="col-12 mb-3 mb-md-0 col-md-4 order-1 order-md-2 text-center">
               <div class="site-logo">
-                <a href="index.html" class="js-logo-clone"><strong>Sale Me</strong></a>
+                <a href="index.php" class="js-logo-clone"><strong>Sale Me</strong></a>
               </div>
             </div>
 
             <div class="col-6 col-md-4 order-3 order-md-3 text-right">
               <div class="site-top-icons">
                 <ul>
-                  <li><a href="loginpembeli.html"><span class="icon icon-person"></span></a></li>
-                  <li>
-                    <a href="cart.html" class="site-cart">
+                  <li><a href="loginpembeli.php"><span class="icon icon-person"></span></a></li>
+                  <li><a href="logout.php" class="btn btn-primary text-white">logout</a></li>
+
+                  <!-- <li>
+                    <a href="cart.php" class="site-cart">
                       <span class="icon icon-shopping_cart"></span>
                       <span class="count">2</span>
                     </a>
-                  </li> 
+                  </li>  -->
                   <li class="d-inline-block d-md-none ml-md-0"><a href="#" class="site-menu-toggle js-menu-toggle"><span class="icon-menu"></span></a></li>
                 </ul>
               </div> 
@@ -57,13 +59,13 @@
         <div class="container">
           <ul class="site-menu js-clone-nav d-none d-md-block">
             <li>
-              <a href="index.html">Home</a>
+              <a href="index.php">Home</a>
             </li>
             <li>
-              <a href="about.html">About</a>
+              <a href="about.php">About</a>
             </li>
-            <li class="active"><a href="shop.html">Shop</a></li>
-            <li><a href="contact.html">Contact</a></li>
+            <li class="active"><a href="shop.php">Shop</a></li>
+            <li><a href="contact.php">Contact</a></li>
           </ul>
         </div>
       </nav>
@@ -72,7 +74,7 @@
     <div class="bg-light py-3">
       <div class="container">
         <div class="row">
-          <div class="col-md-12 mb-0"><a href="index.html">Home</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">Shop</strong></div>
+          <div class="col-md-12 mb-0"><a href="index.php">Home</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">Shop</strong></div>
         </div>
       </div>
     </div>
@@ -83,7 +85,7 @@
         <div class="row mb-5">
           <div class="col-md-9 order-2">
 
-            <div class="row">
+            <!-- <div class="row">
               <div class="col-md-12 mb-5">
                 <div class="float-md-left mb-4"><h2 class="text-black h5">Shop All</h2></div>
                 <div class="d-flex">
@@ -110,16 +112,15 @@
                   </div>
                 </div>
               </div>
-            </div>
+            </div> -->
             <div class="row mb-5">
-
               <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
                 <div class="block-4 text-center border">
                   <figure class="block-4-image">
-                    <a href="shop-single.html"><img src="images/donat.jpg" alt="Image placeholder" class="img-fluid"></a>
+                    <a href="shop-single.php"><img src="images/donat.jpg" alt="Image placeholder" class="img-fluid"></a>
                   </figure>
                   <div class="block-4-text p-4">
-                    <h3><a href="shop-single.html">Donat</a></h3>
+                    <h3><a href="shop-single.php">Donat</a></h3>
                     <p class="mb-0">J.Co</p>
                     <p class="text-primary font-weight-bold">Rp. 50.000,00</p>
                   </div>
@@ -128,10 +129,10 @@
               <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
                 <div class="block-4 text-center border">
                   <figure class="block-4-image">
-                    <a href="shop-single.html"><img src="images/Strawberry Mochi.jpg" alt="Image placeholder" class="img-fluid"></a>
+                    <a href="shop-single.php"><img src="images/Strawberry Mochi.jpg" alt="Image placeholder" class="img-fluid"></a>
                   </figure>
                   <div class="block-4-text p-4">
-                    <h3><a href="shop-single.html">Mochi</a></h3>
+                    <h3><a href="shop-single.php">Mochi</a></h3>
                     <p class="mb-0">Mochicha</p>
                     <p class="text-primary font-weight-bold">Rp. 40.000,00</p>
                   </div>
@@ -140,10 +141,10 @@
                 <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
                   <div class="block-4 text-center border">
                     <figure class="block-4-image">
-                      <a href="shop-single.html"><img src="images/sop buah.JPG" alt="Image placeholder" class="img-fluid"></a>
+                      <a href="shop-single.php"><img src="images/sop buah.JPG" alt="Image placeholder" class="img-fluid"></a>
                     </figure>
                     <div class="block-4-text p-4">
-                      <h3><a href="shop-single.html">Sop Buah</a></h3>
+                      <h3><a href="shop-single.php">Sop Buah</a></h3>
                       <p class="mb-0">Sop Buah Segar</p>
                       <p class="text-primary font-weight-bold">Rp. 25.000,00</p>
                     </div>
@@ -152,10 +153,10 @@
               <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
                 <div class="block-4 text-center border">
                   <figure class="block-4-image">
-                    <a href="shop-single.html"><img src="images/jus.png" alt="Image placeholder" class="img-fluid"></a>
+                    <a href="shop-single.php"><img src="images/jus.png" alt="Image placeholder" class="img-fluid"></a>
                   </figure>
                   <div class="block-4-text p-4">
-                    <h3><a href="shop-single.html">Jus</a></h3>
+                    <h3><a href="shop-single.php">Jus</a></h3>
                     <p class="mb-0">Jus Sehat</p>
                     <p class="text-primary font-weight-bold">Rp. 10.000,00</p>
                   </div>
@@ -165,10 +166,10 @@
               <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
                 <div class="block-4 text-center border">
                   <figure class="block-4-image">
-                    <a href="shop-single.html"><img src="images/Strawberry Cake Roll.jpg" alt="Image placeholder" class="img-fluid"></a>
+                    <a href="shop-single.php"><img src="images/Strawberry Cake Roll.jpg" alt="Image placeholder" class="img-fluid"></a>
                   </figure>
                   <div class="block-4-text p-4">
-                    <h3><a href="shop-single.html">Bolu Gulung</a></h3>
+                    <h3><a href="shop-single.php">Bolu Gulung</a></h3>
                     <p class="mb-0">Bolu Gulung Strawberry</p>
                     <p class="text-primary font-weight-bold">Rp. 100.000,00</p>
                   </div>
@@ -177,10 +178,10 @@
               <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
                 <div class="block-4 text-center border">
                   <figure class="block-4-image">
-                    <a href="shop-single.html"><img src="images/categories-snack.jpg" alt="Image placeholder" class="img-fluid"></a>
+                    <a href="shop-single.php"><img src="images/categories-snack.jpg" alt="Image placeholder" class="img-fluid"></a>
                   </figure>
                   <div class="block-4-text p-4">
-                    <h3><a href="shop-single.html">Kitkat</a></h3>
+                    <h3><a href="shop-single.php">Kitkat</a></h3>
                     <p class="mb-0">Snack</p>
                     <p class="text-primary font-weight-bold">Rp. 12.000,00</p>
                   </div>
@@ -189,10 +190,10 @@
               <!-- <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
                 <div class="block-4 text-center border">
                   <figure class="block-4-image">
-                    <a href="shop-single.html"><img src="images/shoe_1.jpg" alt="Image placeholder" class="img-fluid"></a>
+                    <a href="shop-single.php"><img src="images/shoe_1.jpg" alt="Image placeholder" class="img-fluid"></a>
                   </figure>
                   <div class="block-4-text p-4">
-                    <h3><a href="shop-single.html">Corater</a></h3>
+                    <h3><a href="shop-single.php">Corater</a></h3>
                     <p class="mb-0">Finding perfect products</p>
                     <p class="text-primary font-weight-bold">$50</p>
                   </div>
@@ -201,10 +202,10 @@
               <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
                 <div class="block-4 text-center border">
                   <figure class="block-4-image">
-                    <a href="shop-single.html"><img src="images/cloth_2.jpg" alt="Image placeholder" class="img-fluid"></a>
+                    <a href="shop-single.php"><img src="images/cloth_2.jpg" alt="Image placeholder" class="img-fluid"></a>
                   </figure>
                   <div class="block-4-text p-4">
-                    <h3><a href="shop-single.html">Polo Shirt</a></h3>
+                    <h3><a href="shop-single.php">Polo Shirt</a></h3>
                     <p class="mb-0">Finding perfect products</p>
                     <p class="text-primary font-weight-bold">$50</p>
                   </div>
@@ -214,10 +215,10 @@
               <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
                 <div class="block-4 text-center border">
                   <figure class="block-4-image">
-                    <a href="shop-single.html"><img src="images/cloth_3.jpg" alt="Image placeholder" class="img-fluid"></a>
+                    <a href="shop-single.php"><img src="images/cloth_3.jpg" alt="Image placeholder" class="img-fluid"></a>
                   </figure>
                   <div class="block-4-text p-4">
-                    <h3><a href="shop-single.html">T-Shirt Mockup</a></h3>
+                    <h3><a href="shop-single.php">T-Shirt Mockup</a></h3>
                     <p class="mb-0">Finding perfect products</p>
                     <p class="text-primary font-weight-bold">$50</p>
                   </div>
@@ -226,10 +227,10 @@
               <!-- <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
                 <div class="block-4 text-center border">
                   <figure class="block-4-image">
-                    <a href="shop-single.html"><img src="images/shoe_1.jpg" alt="Image placeholder" class="img-fluid"></a>
+                    <a href="shop-single.php"><img src="images/shoe_1.jpg" alt="Image placeholder" class="img-fluid"></a>
                   </figure>
                   <div class="block-4-text p-4">
-                    <h3><a href="shop-single.html">Corater</a></h3>
+                    <h3><a href="shop-single.php">Corater</a></h3>
                     <p class="mb-0">Finding perfect products</p>
                     <p class="text-primary font-weight-bold">$50</p>
                   </div>
@@ -238,10 +239,10 @@
               <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
                 <div class="block-4 text-center border">
                   <figure class="block-4-image">
-                    <a href="shop-single.html"><img src="images/cloth_1.jpg" alt="Image placeholder" class="img-fluid"></a>
+                    <a href="shop-single.php"><img src="images/cloth_1.jpg" alt="Image placeholder" class="img-fluid"></a>
                   </figure>
                   <div class="block-4-text p-4">
-                    <h3><a href="shop-single.html">Tank Top</a></h3>
+                    <h3><a href="shop-single.php">Tank Top</a></h3>
                     <p class="mb-0">Finding perfect t-shirt</p>
                     <p class="text-primary font-weight-bold">$50</p>
                   </div>
@@ -251,10 +252,10 @@
               <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
                 <div class="block-4 text-center border">
                   <figure class="block-4-image">
-                    <a href="shop-single.html"><img src="images/cloth_2.jpg" alt="Image placeholder" class="img-fluid"></a>
+                    <a href="shop-single.php"><img src="images/cloth_2.jpg" alt="Image placeholder" class="img-fluid"></a>
                   </figure>
                   <div class="block-4-text p-4">
-                    <h3><a href="shop-single.html">Polo Shirt</a></h3>
+                    <h3><a href="shop-single.php">Polo Shirt</a></h3>
                     <p class="mb-0">Finding perfect products</p>
                     <p class="text-primary font-weight-bold">$50</p>
                   </div>
@@ -280,7 +281,7 @@
             </div>
           </div>
 
-          <div class="col-md-3 order-1 mb-5 mb-md-0">
+          <!-- <div class="col-md-3 order-1 mb-5 mb-md-0">
             <div class="border p-4 rounded mb-4">
               <h3 class="mb-3 h6 text-uppercase text-black d-block">Categories</h3>
               <ul class="list-unstyled mb-0">
@@ -324,7 +325,7 @@
                 <a href="#" class="d-flex color-item align-items-center" >
                   <span class="bg-primary color d-inline-block rounded-circle mr-2"></span> <span class="text-black">Purple (1,075)</span>
                 </a>
-              </div>
+              </div> -->
 
             </div>
           </div>
@@ -387,7 +388,7 @@
           <div class="col-md-12">
             <p>
             <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-            Copyright &copy;<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>document.write(new Date().getFullYear());</script> All rights reserved | Made with <i class="icon-heart" aria-hidden="true"></i> by <a href="index.html" target="_blank" class="text-primary">Sale Me Team</a>
+            Copyright &copy;<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>document.write(new Date().getFullYear());</script> All rights reserved | Made with <i class="icon-heart" aria-hidden="true"></i> by <a href="index.php" target="_blank" class="text-primary">Sale Me Team</a>
             <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
             </p>
           </div>
