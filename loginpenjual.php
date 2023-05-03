@@ -1,3 +1,34 @@
+<?php 
+session_start();
+
+if (isset($_SESSION["login"])) {
+	header("Location: index.php");
+	exit;
+}
+
+require 'functions.php';
+
+if (isset($_POST["login"])) {
+	$email = $_POST["email"];
+	$password = $_POST["password"];
+
+	$result = mysqli_query($conn, "SELECT * FROM seller WHERE email = '$email' AND password = '$password'");
+
+	if(mysqli_num_rows($result) === 1){
+		// $row = mysqli_fetch_assoc($result);
+		// if (password_verify($password, $row["password"])){
+		// 	header("Location: index.php");
+		// 	exit;
+		$_SESSION["login"] = true;
+ 		header("Location: index.php");
+	}
+
+	$error = true;
+
+}
+ ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,23 +44,28 @@
 <body>
     <div class="container">
         <div class="login">
-            <form method="POST" action="login.php">
+            <form method="POST" action="">
                 <h1>Login as Seller</h1>
                 <hr>
                 <p>SALE ME</p>
                 <label for="">Email</label>
-                <input type="text" placeholder="saleme@gmail.com">
+                <input type="text" name="email" id="email" required autocomplete="off" placeholder="saleme@gmail.com">
                 <label for="">Password</label>
-                <input type="password" placeholder="Password">
-                <button><a href="/index.html" class="btn btn-sm text-white btn-block">Login</a></button>
+                <input type="password" name="password" id="password" required placeholder="Password">
+
+                <?php  if(isset($error)) : ?>
+                <p>Email Atau Password salah</p>
+                <?php endif; ?>
+
+                <button type="submit" name="login" value="Login">Login</button>
                 <p>
                     <a href="#">Forgot Password?</a>
                 </p>
                 <p>
-                    <a href="loginpembeli.html">or Login as Buyer</a>
+                    <a href="loginpembeli.php">or Login as Buyer</a>
                 </p>
                 <p>
-                    <a href="daftarpembeli.html">New? SignUp Here</a>
+                    <a href="daftarpembeli.php">New? SignUp Here</a>
                 </p>
             </form>
         </div>
