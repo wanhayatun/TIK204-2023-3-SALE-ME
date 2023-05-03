@@ -22,12 +22,12 @@
                 <input type="text" placeholder="example@gmail.com">
                 <label for="">Password</label>
                 <input type="password" placeholder="Password">
-                <button><a href="index.html" class="btn btn-sm text-white btn-block">daftar</a></button>
+                <button><a href="index.php" class="btn btn-sm text-white btn-block">daftar</a></button>
                 <p>
-                    <a href="daftarpembeli.html">SignUp as Buyer</a>
+                    <a href="daftarpembeli.php">SignUp as Buyer</a>
                 </p>
                 <p>
-                    <a href="login.html">Already has Account? Login Here</a>
+                    <a href="loginpenjual.php">Already has Account? Login Here</a>
                 </p>
             </form>
         </div>
