@@ -15,7 +15,17 @@ function query ($query) {
 }
 
 
+// function daftar($account){
+// 	global $conn;
+// 	$email = htmlspecialchars($account["email"]);
+// 	$password = htmlspecialchars($account["password"]);
 
+// 	$query = "INSERT INTO account 
+// 	VALUES ('', '$email', '$password')";
+// 	mysqli_query($conn, $query);
+
+// 	return mysqli_affected_rows($conn);
+// }
 
 
 function tambah($data){
