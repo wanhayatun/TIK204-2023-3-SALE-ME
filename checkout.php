@@ -137,7 +137,7 @@
 
               <div class="form-group row">
                 <div class="col-md-6">
-                  <label for="c_state_country" class="text-black">District / CIty <span class="text-danger">*</span></label>
+                  <label for="c_state_country" class="text-black">District / City <span class="text-danger">*</span></label>
                   <input type="text" class="form-control" id="c_state_country" name="c_state_country">
                 </div>
                 <div class="col-md-6">
@@ -223,7 +223,7 @@
 
                     <div class="form-group row">
                       <div class="col-md-6">
-                        <label for="c_diff_state_country" class="text-black">State / Country <span class="text-danger">*</span></label>
+                        <label for="c_diff_state_country" class="text-black">District / City <span class="text-danger">*</span></label>
                         <input type="text" class="form-control" id="c_diff_state_country" name="c_diff_state_country">
                       </div>
                       <div class="col-md-6">
