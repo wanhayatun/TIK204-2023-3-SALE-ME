@@ -1,0 +1,60 @@
+        <form action="submit_produk.php" method="post">
+             <label for="nama_produk">Nama Produk:</label>
+             <input type="text" id="nama_produk" name="nama_produk"><br><br>
+  
+            <label for="gambar_produk">Gambar Produk:</label>
+            <input type="file" id="gambar_produk" name="gambar_produk"><br><br>
+        
+            <label for="harga_produk">Harga Produk:</label>
+            <input type="number" id="harga_produk" name="harga_produk"><br><br>
+        
+            <label for="expired">expired:</label>
+            <input type="number" id="expired" name="expired"><br><br>
+        
+            <label for="kategori_produk">Kategori Produk:</label>
+            <select id="kategori_produk" name="kategori_produk">
+                <option value="Food">Food</option>
+                <option value="Snack">Snack</option>
+                <option value="Drink">Drink</option>
+                </select><br><br>
+        
+            <input type="submit" value="Tambah Produk">
+        </form>
+        
+  
+  <?php
+  // Ambil data dari form
+  $nama_produk = $_POST['nama_produk'];
+  $gambar_produk = $_FILES['gambar_produk']['name'];
+  $harga_produk = $_POST['harga_produk'];
+  $expired = $_POST['expired'];
+  $kategori_produk = $_POST['kategori_produk'];
+  
+  // Upload gambar produk ke server
+  move_uploaded_file($_FILES['gambar_produk']['tmp_name'], "uploads/" . $_FILES['gambar_produk']['name']);
+  
+  // Simpan data ke database
+  $conn = mysqli_connect("localhost", "username", "password", "nama_database");
+  $sql = "INSERT INTO produk (nama_produk, gambar_produk, harga_produk, expired, kategori_produk) VALUES ('$nama_produk', '$gambar_produk', $harga_produk, $expired, '$kategori_produk')";
+  mysqli_query($conn, $sql);
+  mysqli_close($conn);
+  
+  echo "Produk berhasil ditambahkan.";
+  ?>
+
+  <nav class="site-navigation text-right text-md-center" role="navigation">
+    <div class="container">
+      <ul class="site-menu js-clone-nav d-none d-md-block">
+        <li class="active">
+          <a href="indexp.php">Produk</a>
+        </li>
+        <li>
+          <a href="">Order</a>
+        </li>
+        <!-- <li><a href="shop.php">Shop</a></li> -->
+        <li><a href="contact.php">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+ 
