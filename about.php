@@ -95,9 +95,13 @@
             <div class="site-section-heading pt-3 mb-4">
               <h2 class="text-black">Tentang Aplikasi Kami</h2>
             </div>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe doloribus voluptatum consectetur quae, quam eveniet voluptatem obcaecati commodi possimus minima culpa aliquam recusandae quo vitae hic quis excepturi voluptatibus deserunt..</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-            
+            <p>Dapatkan semua produk yang kamu inginkan dengan harga yang lebih murah .</p>
+            <p>SALE ME adalah aplikasi berbasis web yang memungkinkan pelanggan dapat membeli makakan dari cafe, restoran, bakeri, supermarket, dan pengecer makanan lainnya.</p>
+            <p>Dimana usaha tersebut memiliki makanan yang sudah mendekati kadaluarsa serta kelebihan makanan yang aman & utuh tetapi belum terjual di penghujung hari<p>
+            <p>Kamu bisa membelinya dengan harga DISKON Mulai dari 50% sebelum toko tutup.<p>
+            <p>Dimana lagi kamu dapat membeli dengan harga yang murah!.<p>
+            <P>Hanya di Aplikasi SALE ME.<p>
+              
           </div>
         </div>
       </div>

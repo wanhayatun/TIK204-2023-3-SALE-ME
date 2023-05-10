@@ -1,3 +1,29 @@
+<?php 
+session_start();
+// if (!isset($_SESSION["login"])) {
+// 	header("Location: loginpenjual.php");
+// 	exit;
+// }
+require 'functions.php';
+if (isset($_POST["submit"])) {
+
+	if(daftar($_POST) > 0 ) {
+		echo "
+		<script>
+			alert('Data Berhasil Ditambahkan');
+			document.location.href = 'loginpembeli.php';
+		</script>
+		";
+	} else {
+		echo "
+		<script>
+			alert('Data Gagal Ditambahkan');
+			document.location.href = 'daftarpembeli.php';
+		</script>
+		";
+	}
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,15 +40,15 @@
 <body>
     <div class="container">
         <div class="login">
-            <form action="">
-                <h1>Daftar sebagai pembeli</h1>
+            <form action="" method="POST">
+                <h1>Daftar</h1>
                 <hr>
                 <p>SALE ME</p>
                 <label for="">Email</label>
-                <input type="text" placeholder="example@gmail.com">
+                <input type="email" name="email" id="email" required autocomplete="off" placeholder="example@gmail.com">
                 <label for="">Password</label>
-                <input type="password" placeholder="Password">
-                <button><a href="index.php" class="btn btn-sm text-white btn-block">daftar</a></button>
+                <input type="password" name="password" id="password" required autocomplete="off" placeholder="Password">
+                <button type="submit" name="submit" class="btn btn-primary">Daftar</button>
                 <p>
                     <a href="daftarpenjual.php">SignUp as Seller</a>
                 </p>
@@ -32,7 +58,7 @@
             </form>
         </div>
         <div class="right">
-            <img src="image.png" class="img-fluid" alt="">
+            <img src="image.png" alt="">
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
