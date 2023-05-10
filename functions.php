@@ -26,26 +26,29 @@ function query ($query) {
 
 // 	return mysqli_affected_rows($conn);
 // }
-
-
-function tambah($data){
+function daftar($account){
 	global $conn;
-	$tanggal = htmlspecialchars($data["tanggal"]);
-	$st = htmlspecialchars($data["st"]);
-	$nama = htmlspecialchars($data["nama"]);
-	$sppd = htmlspecialchars($data["sppd"]); 
-	$awal = htmlspecialchars($data["awal"]);
-	$akhir = htmlspecialchars($data["akhir"]);
-	$sumber = htmlspecialchars($data["sumber"]);
-	$biaya = htmlspecialchars($data["biaya"]);
-	$ket = htmlspecialchars($data["ket"]);
+	$email = htmlspecialchars($account["email"]); 
+	$password = htmlspecialchars($account["password"]);
 
-	$query = "INSERT INTO data 
-	VALUES ('', '$tanggal', '$st', '$nama', '$sppd', '$awal', '$akhir', '$sumber', '$biaya', '$ket')";
+	$query = "INSERT INTO account 
+	VALUES ('', '$email', '$password')";
 	mysqli_query($conn, $query);
 
 	return mysqli_affected_rows($conn);
+}
 
+function tambah($seller){
+	global $conn;
+	$nama = htmlspecialchars($seller["nama"]);
+	$email = htmlspecialchars($seller["email"]); 
+	$password = htmlspecialchars($seller["password"]);
+
+	$query = "INSERT INTO seller 
+	VALUES ('', '$nama', '$email', '$password')";
+	mysqli_query($conn, $query);
+
+	return mysqli_affected_rows($conn);
 }
 
 
@@ -53,7 +56,7 @@ function tambah($data){
 
 function hapus($id) {
 	global $conn;
-	mysqli_query($conn, "DELETE FROM data WHERE id = $id");
+	mysqli_query($conn, "DELETE FROM product WHERE id = $id");
 
 	return mysqli_affected_rows($conn);
 }
@@ -95,11 +98,8 @@ function edit($data) {
 
 
 function search($keyword){
-	$query = "SELECT * FROM data WHERE 
-	tanggal LIKE '%$keyword%' OR
-	nama LIKE '%$keyword%' OR
-	sppd LIKE '%$keyword%' OR
-	st LIKE '%$keyword'
+	$query = "SELECT * FROM product WHERE 
+	nama LIKE '%$keyword%'
 	";
 	return query($query);
 }
