@@ -99,7 +99,7 @@
             <p>SALE ME adalah aplikasi berbasis web yang memungkinkan pelanggan dapat membeli makakan dari cafe, restoran, bakeri, supermarket, dan pengecer makanan lainnya.</p>
             <p>Dimana usaha tersebut memiliki makanan yang sudah mendekati kadaluarsa serta kelebihan makanan yang aman & utuh tetapi belum terjual di penghujung hari<p>
             <p>Kamu bisa membelinya dengan harga DISKON Mulai dari 50% sebelum toko tutup.<p>
-            <p>Dimana lagi kamu dapat membeli dengan harga yang murah!.<p>
+            <p>Dimana lagi kamu dapat membeli makanan dengan harga yang murah!.<p>
             <P>Hanya di Aplikasi SALE ME.<p>
               
           </div>
@@ -125,7 +125,9 @@
                   <p class="block-38-subheading">Mahasiswa</p>
                 </div>
                 <div class="block-38-body">
-                  <p>NPM : 2104111010041, PRODI : TEKNIK KOMPUTER, FAKULTAS : TEKNIK. </p>
+                  <p>NPM : 2104111010041 </p>
+                  <p>PRODI : TEKNIK KOMPUTER </p>
+                  <p>FAKULTAS : TEKNIK </p>
                 </div>
               </div>
             </div>
@@ -139,7 +141,9 @@
                   <p class="block-38-subheading">Mahasiswa</p>
                 </div>
                 <div class="block-38-body">
-                  <p>NPM : 2104111010079, PRODI : TEKNIK KOMPUTER, FAKULTAS : TEKNIK. </p>
+                  <p>NPM : 2104111010079 </p>
+                  <p>PRODI : TEKNIK KOMPUTER </p>
+                  <p>FAKULTAS : TEKNIK </p>
                 </div>
               </div>
             </div>
@@ -153,7 +157,9 @@
                   <p class="block-38-subheading">Mahasiswa</p>
                 </div>
                 <div class="block-38-body">
-                  <p>NPM : 2104111010061, PRODI : TEKNIK KOMPUTER, FAKULTAS : TEKNIK. </p>
+                  <p>NPM : 2104111010061 </p>
+                  <p>PRODI : TEKNIK KOMPUTER </p>
+                  <p>FAKULTAS : TEKNIK. </p>
                 </div>
               </div>
             </div>
@@ -167,7 +173,9 @@
                   <p class="block-38-subheading">Mahasiswa</p>
                 </div>
                 <div class="block-38-body">
-                  <p>NPM : 2104111010004, PRODI : TEKNIK KOMPUTER, FAKULTAS : TEKNIK. </p>
+                  <p>NPM : 2104111010004 </p>
+                  <p>PRODI : TEKNIK KOMPUTER </p>
+                  <p>FAKULTAS : TEKNIK </p>
                 </div>
               </div>
             </div>
@@ -186,7 +194,7 @@
             </div>
             <div class="text">
               <h2 class="text-uppercase">Lot of Promos</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus at iaculis quam. Integer accumsan tincidunt fringilla.</p>
+              <p>Belanja makin hemat. Dapatkan diskon sampai 50% untuk semuau barang di SALE ME. Jangan sampai kehabisan!. </p>
             </div>
           </div>
           <div class="col-md-6 col-lg-4 d-lg-flex mb-4 mb-lg-0 pl-4" data-aos="fade-up" data-aos-delay="100">
@@ -195,7 +203,7 @@
             </div>
             <div class="text">
               <h2 class="text-uppercase">Reduce Food Waste</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus at iaculis quam. Integer accumsan tincidunt fringilla.</p>
+              <p> Aplikasi ini mencegah pemborosan makanan di Indonesia. Mari menjadi pahlawan bumi, dengan cara mengurangi limbah makanan. </p>
             </div>
           </div>
           <div class="col-md-6 col-lg-4 d-lg-flex mb-4 mb-lg-0 pl-4" data-aos="fade-up" data-aos-delay="200">
@@ -204,7 +212,8 @@
             </div>
             <div class="text">
               <h2 class="text-uppercase">Customer Support</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus at iaculis quam. Integer accumsan tincidunt fringilla.</p>
+              <p>Jika mendapakan kendala dalam penggunaan aplikasi ini. </p>
+              <p>Jangan khawatir, aplikasi ini dapat di contact kapan pun dan dimana pun. </p> 
             </div>
           </div>
         </div>
