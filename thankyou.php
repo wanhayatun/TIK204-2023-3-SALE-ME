@@ -1,3 +1,30 @@
+<?php 
+session_start();
+if (!isset($_SESSION["login"])) {
+	header("Location: loginpembeli.php");
+	exit;
+}
+require 'functions.php';
+
+// $perhalaman = 10;
+// $jumlah = count(query("SELECT * FROM product"));
+// $jumlahhalaman = ceil($jumlah / $perhalaman);
+// // // if (isset($_GET["page"])) {
+// // // $halaktif = $_GET["page"];
+// // // } else {
+// // // 	$halaktif = 1;
+// // // }
+// $halaktif = (isset($_GET["page"])) ? $_GET["page"] : 1;
+// $awaldata = ($perhalaman * $halaktif) - $perhalaman;
+
+
+$product = query("SELECT * FROM product");
+
+if (isset($_POST["search"])) {
+	$data = search($_POST["keyword"]);
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -23,10 +50,14 @@
           <div class="row align-items-center">
 
             <div class="col-6 col-md-4 order-2 order-md-1 site-search-icon text-left">
-              <form action="" class="site-block-top-search">
+              <form action="" method="POST" class="site-block-top-search">
                 <span class="icon icon-search2"></span>
-                <input type="text" class="form-control border-0" placeholder="Search">
+                <input type="text" name="keyword" class="form-control border-0" placeholder="Search">
               </form>
+              <!-- <form action="" method="POST" class="search">
+                <input type="text" name="keyword" size="25" placeholder="Cari Tanggal, Nama, No SPPD" autocomplete="off">
+                <button type="submit" name="search">&#x1F50D</button>
+              </form> -->
             </div>
 
             <div class="col-12 mb-3 mb-md-0 col-md-4 order-1 order-md-2 text-center">
@@ -40,13 +71,6 @@
                 <ul>
                   <li><a href="loginpembeli.php"><span class="icon icon-person"></span></a></li>
                   <li><a href="logout.php" class="btn btn-primary text-white">logout</a></li>
-
-                  <!-- <li>
-                    <a href="cart.php" class="site-cart">
-                      <span class="icon icon-shopping_cart"></span>
-                      <span class="count">2</span>
-                    </a>
-                  </li>  -->
                   <li class="d-inline-block d-md-none ml-md-0"><a href="#" class="site-menu-toggle js-menu-toggle"><span class="icon-menu"></span></a></li>
                 </ul>
               </div> 
@@ -64,7 +88,7 @@
             <li>
               <a href="about.php">About</a>
             </li>
-            <li><a href="shop.php">Shop</a></li>
+            <!-- <li><a href="shop.php">Shop</a></li> -->
             <li><a href="contact.php">Contact</a></li>
           </ul>
         </div>
@@ -74,10 +98,11 @@
     <div class="bg-light py-3">
       <div class="container">
         <div class="row">
-          <div class="col-md-12 mb-0"><a href="index.php">Home</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">Contact</strong></div>
+          <div class="col-md-12 mb-0"><a href="index.php">Home</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">Checkout</strong></div>
         </div>
       </div>
-    </div>  
+    </div>
+
 
     <div class="site-section">
       <div class="container">
