@@ -6,24 +6,25 @@ if (!isset($_SESSION["login"])) {
 }
 require 'functions.php';
 
-// $perhalaman = 10;
-// $jumlah = count(query("SELECT * FROM data"));
-// $jumlahhalaman = ceil($jumlah / $perhalaman);
+$perhalaman = 10;
+$jumlah = count(query("SELECT * FROM product"));
+$jumlahhalaman = ceil($jumlah / $perhalaman);
 // // if (isset($_GET["page"])) {
 // // $halaktif = $_GET["page"];
 // // } else {
 // // 	$halaktif = 1;
 // // }
-// $halaktif = (isset($_GET["page"])) ? $_GET["page"] : 1;
-// $awaldata = ($perhalaman * $halaktif) - $perhalaman;
+$halaktif = (isset($_GET["page"])) ? $_GET["page"] : 1;
+$awaldata = ($perhalaman * $halaktif) - $perhalaman;
 
 
-// $data = query("SELECT * FROM data ORDER BY tanggal ASC LIMIT $awaldata, $perhalaman");
+$product = query("SELECT * FROM product ORDER BY tanggal ASC LIMIT $awaldata, $perhalaman");
 
 if (isset($_POST["search"])) {
 	$data = search($_POST["keyword"]);
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -49,9 +50,13 @@ if (isset($_POST["search"])) {
           <div class="row align-items-center">
 
             <div class="col-6 col-md-4 order-2 order-md-1 site-search-icon text-left">
-              <form action="" class="site-block-top-search">
+              <!-- <form action="" method="POST" class="site-block-top-search">
                 <span class="icon icon-search2"></span>
-                <input type="text" class="form-control border-0" placeholder="Search">
+                <input type="text" name="keyword" class="form-control border-0" placeholder="Search">
+              </form> -->
+              <form action="" method="POST" class="site-block-top-search">
+                <input type="text" name="keyword" size="25" placeholder="Cari Produk" autocomplete="off">
+                <span class="icon icon-search2" type="submit" name="search"></span>
               </form>
             </div>
 
@@ -134,12 +139,15 @@ if (isset($_POST["search"])) {
     <div class="site-section site site-blocks-2">
       <div class="container">
         <div class="row">
+
+        <?php foreach($product as $row) : ?>
+
           <div class="col-sm-6 col-md-3 text-center" data-aos="fade-up">
             <div class="card h-80">
               <div class="card-body">
-                <img src="images/donat.jpg" alt="" class="img-fluid rounded">
-                <h5 class="card-title text-dark pt-2">Donat Yummy</h5>
-                <h6 class="card-text text-primary font-weight-bold">Rp. 30.000,00</h6>
+                <img src="images/<?= $row["gambar"] ?>" alt="" class="img-fluid rounded">
+                <h5 class="card-title text-dark pt-2"><?= $row["nama"] ?></h5>
+                <h6 class="card-text text-primary font-weight-bold">Rp. <?= $row["harga"] ?></h6>
                 <!-- <h6>expired in 3 days</h6> -->
                 <div class="text-center">
                   <a href="checkout.php" class="btn btn-primary" role="button">Buy</a>
@@ -147,7 +155,10 @@ if (isset($_POST["search"])) {
               </div>
             </div>
           </div>
-          <div class="col-sm-6 col-md-3 text-center" data-aos="fade-up">
+
+          <?php endforeach; ?>
+
+          <!-- <div class="col-sm-6 col-md-3 text-center" data-aos="fade-up">
             <div class="card h-80">
               <div class="card-body">
                 <img src="images/Strawberry Mochi.jpg" alt="" class="img-fluid rounded">
@@ -185,7 +196,7 @@ if (isset($_POST["search"])) {
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
 
     <!-- pagination -->
   </div>

@@ -1,3 +1,29 @@
+<?php 
+session_start();
+// if (!isset($_SESSION["login"])) {
+// 	header("Location: loginpenjual.php");
+// 	exit;
+// }
+require 'functions.php';
+if (isset($_POST["submit"])) {
+
+	if(tambah($_POST) > 0 ) {
+		echo "
+		<script>
+			alert('Data Berhasil Ditambahkan');
+			document.location.href = 'loginpenjual.php';
+		</script>
+		";
+	} else {
+		echo "
+		<script>
+			alert('Data Gagal Ditambahkan');
+			document.location.href = 'daftarpenjual.php';
+		</script>
+		";
+	}
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,15 +40,15 @@
 <body>
     <div class="container">
         <div class="login">
-            <form action="">
-                <h1>Daftar sebagai penjual</h1>
+            <form action="" method="POST">
+                <h1>Daftar</h1>
                 <hr>
                 <p>SALE ME</p>
                 <label for="">Email</label>
-                <input type="text" placeholder="example@gmail.com">
+                <input type="email" name="email" id="email" required autocomplete="off" placeholder="example@gmail.com">
                 <label for="">Password</label>
-                <input type="password" placeholder="Password">
-                <button><a href="index.php" class="btn btn-sm text-white btn-block">daftar</a></button>
+                <input type="password" name="password" id="password" required autocomplete="off" placeholder="Password">
+                <button type="submit" name="submit" class="btn btn-primary">Daftar</button>
                 <p>
                     <a href="daftarpembeli.php">SignUp as Buyer</a>
                 </p>
