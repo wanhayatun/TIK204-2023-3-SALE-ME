@@ -31,15 +31,15 @@
 
             <div class="col-12 mb-3 mb-md-0 col-md-4 order-1 order-md-2 text-center">
               <div class="site-logo">
-                <a href="index.php" class="js-logo-clone"><strong>Sale Me</strong></a>
+                <a href="indexp.php" class="js-logo-clone"><strong>Sale Me</strong></a>
               </div>
             </div>
 
             <div class="col-6 col-md-4 order-3 order-md-3 text-right">
               <div class="site-top-icons">
                 <ul>
-                  <li><a href="loginpembeli.php"><span class="icon icon-person"></span></a></li>
-                  <li><a href="logoutp.php" class="btn btn-primary text-white">logout</a></li>
+                  <li><a href="loginpenjual.php"><span class="icon icon-person"></span></a></li>
+                  <li><a href="logout.php" class="btn btn-primary text-white">logout</a></li>
 
                   <!-- <li>
                     <a href="cart.php" class="site-cart">
@@ -59,13 +59,13 @@
         <div class="container">
           <ul class="site-menu js-clone-nav d-none d-md-block">
             <li>
-              <a href="index.php">Home</a>
+              <a href="indexp.php">Produk</a>
             </li>
             <li>
-              <a href="about.php">About</a>
+              <a href="order.php">Order</a>
             </li>
             <!-- <li><a href="shop.php">Shop</a></li> -->
-            <li  class="active"><a href="contact.php">Contact</a></li>
+            <li  class="active"><a href="contactp.php">Contact</a></li>
           </ul>
         </div>
       </nav>
