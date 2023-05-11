@@ -6,19 +6,19 @@ if (!isset($_SESSION["login"])) {
 }
 require 'functions.php';
 
-$perhalaman = 10;
-$jumlah = count(query("SELECT * FROM product"));
-$jumlahhalaman = ceil($jumlah / $perhalaman);
-// if (isset($_GET["page"])) {
-// $halaktif = $_GET["page"];
-// } else {
-// 	$halaktif = 1;
-// }
-$halaktif = (isset($_GET["page"])) ? $_GET["page"] : 1;
-$awalproduct = ($perhalaman * $halaktif) - $perhalaman;
+// $perhalaman = 10;
+// $jumlah = count(query("SELECT * FROM product"));
+// $jumlahhalaman = ceil($jumlah / $perhalaman);
+// // if (isset($_GET["page"])) {
+// // $halaktif = $_GET["page"];
+// // } else {
+// // 	$halaktif = 1;
+// // }
+// $halaktif = (isset($_GET["page"])) ? $_GET["page"] : 1;
+// $awalproduct = ($perhalaman * $halaktif) - $perhalaman;
 
 
-$product = query("SELECT * FROM product ORDER BY tanggal ASC LIMIT $awalproduct, $perhalaman");
+$product = query("SELECT * FROM product");
 
 if (isset($_POST["search"])) {
 	$product = search($_POST["keyword"]);
@@ -82,7 +82,7 @@ if (isset($_POST["search"])) {
               <a href="indexp.php">Produk</a>
             </li>
             <li>
-              <a href="">Order</a>
+              <a href="order.php">Order</a>
             </li>
             <!-- <li><a href="shop.php">Shop</a></li> -->
             <li><a href="contactp.php">Contact</a></li>
@@ -131,13 +131,12 @@ if (isset($_POST["search"])) {
         </div>
       </div>
     </div> -->
-    
 
 
       <div class="container pt-4">
         <h2>My Products</h2>
         <div class="container text-right pb-4">
-          <a href="" class="btn btn-primary" role="button">Tambah Produk</a>
+          <a href="tambahproduk.php" class="btn btn-primary" role="button">Tambah Produk</a>
         </div>
         <table class="table table-hover table-responsive-lg">
           <thead class="table-primary">
@@ -146,7 +145,6 @@ if (isset($_POST["search"])) {
               <th>Image</th>
               <th>Product</th>
               <th>Price</th>
-              <th>Categories</th>
               <th>Expired</th>
               <th></th>
             </tr>
@@ -160,10 +158,9 @@ if (isset($_POST["search"])) {
               <td><img src="images/<?= $row["gambar"] ?>" class="img-thumbnail" width="100" height="100" alt=""></td>
               <td><?= $row["nama"] ?></td>
               <td><?= $row["harga"] ?></td>
-              <td><?= $row["kategori"] ?></td>
               <td><?= $row["kadaluarsa"] ?></td>
               <td>
-                <span><a href="" class="btn btn-primary" role="button">Edit</a></span>
+                <span><a href="editproduk.php?id=<?= $row["id"]; ?>" class="btn btn-primary" role="button">Edit</a></span>
                 <span><a href="hapus.php?id=<?= $row["id"]; ?>" class="btn btn-outline-primary" onclick="return confirm('Hapus Data?');">Hapus</a></span>
               </td>
             </tr>
