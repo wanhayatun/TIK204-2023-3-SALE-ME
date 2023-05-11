@@ -1,3 +1,30 @@
+<?php 
+session_start();
+if (!isset($_SESSION["login"])) {
+	header("Location: loginpembeli.php");
+	exit;
+}
+require 'functions.php';
+
+// $perhalaman = 10;
+// $jumlah = count(query("SELECT * FROM product"));
+// $jumlahhalaman = ceil($jumlah / $perhalaman);
+// // // if (isset($_GET["page"])) {
+// // // $halaktif = $_GET["page"];
+// // // } else {
+// // // 	$halaktif = 1;
+// // // }
+// $halaktif = (isset($_GET["page"])) ? $_GET["page"] : 1;
+// $awaldata = ($perhalaman * $halaktif) - $perhalaman;
+
+
+$product = query("SELECT * FROM product");
+
+if (isset($_POST["search"])) {
+	$data = search($_POST["keyword"]);
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -23,10 +50,14 @@
           <div class="row align-items-center">
 
             <div class="col-6 col-md-4 order-2 order-md-1 site-search-icon text-left">
-              <form action="" class="site-block-top-search">
+              <form action="" method="POST" class="site-block-top-search">
                 <span class="icon icon-search2"></span>
-                <input type="text" class="form-control border-0" placeholder="Search">
+                <input type="text" name="keyword" class="form-control border-0" placeholder="Search">
               </form>
+              <!-- <form action="" method="POST" class="search">
+                <input type="text" name="keyword" size="25" placeholder="Cari Tanggal, Nama, No SPPD" autocomplete="off">
+                <button type="submit" name="search">&#x1F50D</button>
+              </form> -->
             </div>
 
             <div class="col-12 mb-3 mb-md-0 col-md-4 order-1 order-md-2 text-center">
@@ -40,13 +71,6 @@
                 <ul>
                   <li><a href="loginpembeli.php"><span class="icon icon-person"></span></a></li>
                   <li><a href="logout.php" class="btn btn-primary text-white">logout</a></li>
-
-                  <li>
-                    <a href="cart.php" class="site-cart">
-                      <span class="icon icon-shopping_cart"></span>
-                      <span class="count">2</span>
-                    </a>
-                  </li> 
                   <li class="d-inline-block d-md-none ml-md-0"><a href="#" class="site-menu-toggle js-menu-toggle"><span class="icon-menu"></span></a></li>
                 </ul>
               </div> 
@@ -64,7 +88,7 @@
             <li>
               <a href="about.php">About</a>
             </li>
-            <li><a href="shop.php">Shop</a></li>
+            <!-- <li><a href="shop.php">Shop</a></li> -->
             <li><a href="contact.php">Contact</a></li>
           </ul>
         </div>
@@ -74,90 +98,62 @@
     <div class="bg-light py-3">
       <div class="container">
         <div class="row">
-          <div class="col-md-12 mb-0"><a href="index.php">Home</a> <span class="mx-2 mb-0">/</span> <a href="cart.php">Cart</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">Checkout</strong></div>
+          <div class="col-md-12 mb-0"><a href="index.php">Home</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">Checkout</strong></div>
         </div>
       </div>
     </div>
 
     <div class="site-section">
       <div class="container">
-        <div class="row mb-5">
+        <!-- <div class="row mb-5">
           <div class="col-md-12">
             <div class="border p-4 rounded" role="alert">
               Returning customer? <a href="#">Click here</a> to login
             </div>
           </div>
-        </div>
+        </div> -->
         <div class="row">
           <div class="col-md-6 mb-5 mb-md-0">
-            <h2 class="h3 mb-3 text-black">Billing Details</h2>
+            <h2 class="h3 mb-3 text-black">Detail Pembelian</h2>
             <div class="p-3 p-lg-5 border">
-              <div class="form-group">
-                <label for="c_country" class="text-black">District <span class="text-danger">*</span></label>
-                <select id="c_country" class="form-control">
-                  <option value="1">Select a district</option>    
-                  <option value="2">Banda Aceh</option>    
-                  <option value="3">Aceh Besar</option>    
-                  <option value="4">Aceh Utara</option>    
-                  <option value="5">Aceh Timur</option>    
-                  <option value="6">Aceh Selatan</option>    
-                  <option value="7">Aceh Barat</option>    
-                  <option value="8">Sabang</option>    
-                  <option value="9">Aceh Tamiang</option>    
-                </select>
-              </div>
+              
               <div class="form-group row">
-                <div class="col-md-6">
-                  <label for="c_fname" class="text-black">First Name <span class="text-danger">*</span></label>
-                  <input type="text" class="form-control" id="c_fname" name="c_fname">
+                <div class="col-md-12">
+                  <label for="c_fname" class="text-black">Nama <span class="text-danger">*</span></label>
+                  <input type="text" class="form-control" id="c_fname" name="c_fname" placeholder="Masukkan Nama">
                 </div>
-                <div class="col-md-6">
+                <!-- <div class="col-md-6">
                   <label for="c_lname" class="text-black">Last Name <span class="text-danger">*</span></label>
                   <input type="text" class="form-control" id="c_lname" name="c_lname">
-                </div>
+                </div> -->
               </div>
+
+             
 
               <div class="form-group row">
                 <div class="col-md-12">
-                  <label for="c_companyname" class="text-black">Company Name </label>
-                  <input type="text" class="form-control" id="c_companyname" name="c_companyname">
+                  <label for="c_address" class="text-black">Alamat <span class="text-danger">*</span></label>
+                  <input type="text" class="form-control" id="c_address" name="c_address" placeholder="Masukkan Alamat">
                 </div>
               </div>
-
-              <div class="form-group row">
-                <div class="col-md-12">
-                  <label for="c_address" class="text-black">Address <span class="text-danger">*</span></label>
-                  <input type="text" class="form-control" id="c_address" name="c_address" placeholder="Street address">
-                </div>
-              </div>
-
+<!-- 
               <div class="form-group">
                 <input type="text" class="form-control" placeholder="Apartment, suite, unit etc. (optional)">
-              </div>
+              </div> -->
 
-              <div class="form-group row">
-                <div class="col-md-6">
-                  <label for="c_state_country" class="text-black">District / City <span class="text-danger">*</span></label>
-                  <input type="text" class="form-control" id="c_state_country" name="c_state_country">
-                </div>
-                <div class="col-md-6">
-                  <label for="c_postal_zip" class="text-black">Posta / Zip <span class="text-danger">*</span></label>
-                  <input type="text" class="form-control" id="c_postal_zip" name="c_postal_zip">
-                </div>
-              </div>
 
               <div class="form-group row mb-5">
                 <div class="col-md-6">
-                  <label for="c_email_address" class="text-black">Email Address <span class="text-danger">*</span></label>
-                  <input type="text" class="form-control" id="c_email_address" name="c_email_address">
+                  <label for="c_email_address" class="text-black">Email <span class="text-danger">*</span></label>
+                  <input type="text" class="form-control" id="c_email_address" name="c_email_address" placeholder="Email Aktif">
                 </div>
                 <div class="col-md-6">
                   <label for="c_phone" class="text-black">Phone <span class="text-danger">*</span></label>
-                  <input type="text" class="form-control" id="c_phone" name="c_phone" placeholder="Phone Number">
+                  <input type="text" class="form-control" id="c_phone" name="c_phone" placeholder="No. Telp / Whatsapp">
                 </div>
               </div>
 
-              <div class="form-group">
+              <!-- <div class="form-group">
                 <label for="c_create_account" class="text-black" data-toggle="collapse" href="#create_an_account" role="button" aria-expanded="false" aria-controls="create_an_account"><input type="checkbox" value="1" id="c_create_account"> Create an account?</label>
                 <div class="collapse" id="create_an_account">
                   <div class="py-2">
@@ -168,96 +164,21 @@
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> -->
 
 
-              <div class="form-group">
-                <label for="c_ship_different_address" class="text-black" data-toggle="collapse" href="#ship_different_address" role="button" aria-expanded="false" aria-controls="ship_different_address"><input type="checkbox" value="1" id="c_ship_different_address"> Ship To A Different Address?</label>
-                <div class="collapse" id="ship_different_address">
-                  <div class="py-2">
-
-                    <div class="form-group">
-                      <label for="c_diff_country" class="text-black">District <span class="text-danger">*</span></label>
-                      <select id="c_diff_country" class="form-control">
-                        <option value="1">Select a district</option>    
-                        <option value="2">Banda Aceh</option>    
-                        <option value="3">Aceh Besar</option>    
-                        <option value="4">Aceh Utara</option>    
-                        <option value="5">Aceh Timur</option>    
-                        <option value="6">Aceh Selatan</option>    
-                        <option value="7">Aceh Barat</option>    
-                        <option value="8">Sabang</option>    
-                        <option value="9">Aceh Tamiang</option>    
-                      </select>
-                    </div>
-
-
-                    <div class="form-group row">
-                      <div class="col-md-6">
-                        <label for="c_diff_fname" class="text-black">First Name <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" id="c_diff_fname" name="c_diff_fname">
-                      </div>
-                      <div class="col-md-6">
-                        <label for="c_diff_lname" class="text-black">Last Name <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" id="c_diff_lname" name="c_diff_lname">
-                      </div>
-                    </div>
-
-                    <div class="form-group row">
-                      <div class="col-md-12">
-                        <label for="c_diff_companyname" class="text-black">Company Name </label>
-                        <input type="text" class="form-control" id="c_diff_companyname" name="c_diff_companyname">
-                      </div>
-                    </div>
-
-                    <div class="form-group row">
-                      <div class="col-md-12">
-                        <label for="c_diff_address" class="text-black">Address <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" id="c_diff_address" name="c_diff_address" placeholder="Street address">
-                      </div>
-                    </div>
-
-                    <div class="form-group">
-                      <input type="text" class="form-control" placeholder="Apartment, suite, unit etc. (optional)">
-                    </div>
-
-                    <div class="form-group row">
-                      <div class="col-md-6">
-                        <label for="c_diff_state_country" class="text-black">District / City <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" id="c_diff_state_country" name="c_diff_state_country">
-                      </div>
-                      <div class="col-md-6">
-                        <label for="c_diff_postal_zip" class="text-black">Posta / Zip <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" id="c_diff_postal_zip" name="c_diff_postal_zip">
-                      </div>
-                    </div>
-
-                    <div class="form-group row mb-5">
-                      <div class="col-md-6">
-                        <label for="c_diff_email_address" class="text-black">Email Address <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" id="c_diff_email_address" name="c_diff_email_address">
-                      </div>
-                      <div class="col-md-6">
-                        <label for="c_diff_phone" class="text-black">Phone <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" id="c_diff_phone" name="c_diff_phone" placeholder="Phone Number">
-                      </div>
-                    </div>
-
-                  </div>
-
-                </div>
-              </div>
+              
 
               <div class="form-group">
                 <label for="c_order_notes" class="text-black">Order Notes</label>
-                <textarea name="c_order_notes" id="c_order_notes" cols="30" rows="5" class="form-control" placeholder="Write your notes here..."></textarea>
+                <textarea name="c_order_notes" id="c_order_notes" cols="30" rows="5" class="form-control" placeholder="Tuliskan Catatan disini..."></textarea>
               </div>
 
             </div>
           </div>
           <div class="col-md-6">
 
-            <div class="row mb-5">
+            <!-- <div class="row mb-5">
               <div class="col-md-12">
                 <h2 class="h3 mb-3 text-black">Coupon Code</h2>
                 <div class="p-3 p-lg-5 border">
@@ -272,7 +193,7 @@
 
                 </div>
               </div>
-            </div>
+            </div> -->
             
             <div class="row mb-5">
               <div class="col-md-12">
@@ -285,20 +206,12 @@
                     </thead>
                     <tbody>
                       <tr>
-                        <td>Sop Buah <strong class="mx-2">x</strong> 1</td>
-                        <td>Rp. 25.000,00</td>
-                      </tr>
-                      <tr>
                         <td>Jus <strong class="mx-2">x</strong>   1</td>
                         <td>Rp. 10.000,00</td>
                       </tr>
                       <tr>
-                        <td class="text-black font-weight-bold"><strong>Cart Subtotal</strong></td>
-                        <td class="text-black">Rp. 35.000,00</td>
-                      </tr>
-                      <tr>
                         <td class="text-black font-weight-bold"><strong>Order Total</strong></td>
-                        <td class="text-black font-weight-bold"><strong>Rp. 35.000,00</strong></td>
+                        <td class="text-black font-weight-bold"><strong>Rp. 10.000,00</strong></td>
                       </tr>
                     </tbody>
                   </table>

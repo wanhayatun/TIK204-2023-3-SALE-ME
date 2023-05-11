@@ -6,19 +6,19 @@ if (!isset($_SESSION["login"])) {
 }
 require 'functions.php';
 
-$perhalaman = 10;
-$jumlah = count(query("SELECT * FROM product"));
-$jumlahhalaman = ceil($jumlah / $perhalaman);
-// // if (isset($_GET["page"])) {
-// // $halaktif = $_GET["page"];
-// // } else {
-// // 	$halaktif = 1;
-// // }
-$halaktif = (isset($_GET["page"])) ? $_GET["page"] : 1;
-$awaldata = ($perhalaman * $halaktif) - $perhalaman;
+// $perhalaman = 10;
+// $jumlah = count(query("SELECT * FROM product"));
+// $jumlahhalaman = ceil($jumlah / $perhalaman);
+// // // if (isset($_GET["page"])) {
+// // // $halaktif = $_GET["page"];
+// // // } else {
+// // // 	$halaktif = 1;
+// // // }
+// $halaktif = (isset($_GET["page"])) ? $_GET["page"] : 1;
+// $awaldata = ($perhalaman * $halaktif) - $perhalaman;
 
 
-$product = query("SELECT * FROM product ORDER BY tanggal ASC LIMIT $awaldata, $perhalaman");
+$product = query("SELECT * FROM product");
 
 if (isset($_POST["search"])) {
 	$data = search($_POST["keyword"]);
@@ -50,14 +50,14 @@ if (isset($_POST["search"])) {
           <div class="row align-items-center">
 
             <div class="col-6 col-md-4 order-2 order-md-1 site-search-icon text-left">
-              <!-- <form action="" method="POST" class="site-block-top-search">
+              <form action="" method="POST" class="site-block-top-search">
                 <span class="icon icon-search2"></span>
                 <input type="text" name="keyword" class="form-control border-0" placeholder="Search">
-              </form> -->
-              <form action="" method="POST" class="site-block-top-search">
-                <input type="text" name="keyword" size="25" placeholder="Cari Produk" autocomplete="off">
-                <span class="icon icon-search2" type="submit" name="search"></span>
               </form>
+              <!-- <form action="" method="POST" class="search">
+                <input type="text" name="keyword" size="25" placeholder="Cari Tanggal, Nama, No SPPD" autocomplete="off">
+                <button type="submit" name="search">&#x1F50D</button>
+              </form> -->
             </div>
 
             <div class="col-12 mb-3 mb-md-0 col-md-4 order-1 order-md-2 text-center">
@@ -94,6 +94,14 @@ if (isset($_POST["search"])) {
         </div>
       </nav>
     </header>
+
+    <div class="bg-light py-3">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 mb-0"><a href="index.php">Home</a></div>
+        </div>
+      </div>
+    </div>
 <!-- 
     <div class="site-blocks-cover" style="background-image: url(images/cover1.jpg);" data-aos="fade">
       <div class="container">
@@ -136,13 +144,13 @@ if (isset($_POST["search"])) {
       </div>
     </div> -->
 
-    <div class="site-section site site-blocks-2">
+    <div class="site-section site site-blocks-1">
       <div class="container">
         <div class="row">
 
         <?php foreach($product as $row) : ?>
 
-          <div class="col-sm-6 col-md-3 text-center" data-aos="fade-up">
+          <div class="col-sm-6 col-md-3 text-center pt-3" data-aos="fade-up">
             <div class="card h-80">
               <div class="card-body">
                 <img src="images/<?= $row["gambar"] ?>" alt="" class="img-fluid rounded">
@@ -201,7 +209,7 @@ if (isset($_POST["search"])) {
     <!-- pagination -->
   </div>
   <div class="row" data-aos="fade-up">
-    <div class="col-md-12 text-center pb-5">
+    <div class="col-md-12 text-center pb-5 pt-5">
       <div class="site-block-27">
         <ul>
           <li class="pr-4"><a href="#">&lt;</a></li>
