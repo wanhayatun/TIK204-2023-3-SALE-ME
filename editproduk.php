@@ -87,7 +87,7 @@ if (isset($_POST["submit"])) {
               <a href="indexp.php">Produk</a>
             </li>
             <li>
-              <a href="">Order</a>
+              <a href="order.php">Order</a>
             </li>
             <!-- <li><a href="shop.php">Shop</a></li> -->
             <li><a href="contactp.php">Contact</a></li>
@@ -142,7 +142,7 @@ if (isset($_POST["submit"])) {
         <form action="" method="POST">
         <input type="hidden" name="id" value="<?= $product["id"]; ?>">
             <div class="mb-3">
-                <label for="" class="form-label">Gambar Produk</label> <br>
+                <label for="gambar" class="form-label">Gambar Produk</label> <br>
                 <img src="images/<?= $product["gambar"]; ?>" alt="" width="100px"> <br>
                 <input class="form-control" type="file" name="gambar" id="gambar">
             </div>
