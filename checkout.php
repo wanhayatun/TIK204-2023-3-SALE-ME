@@ -143,11 +143,7 @@ if (isset($_POST["search"])) {
 
 
               <div class="form-group row mb-5">
-                <div class="col-md-6">
-                  <label for="c_email_address" class="text-black">Email <span class="text-danger">*</span></label>
-                  <input type="text" class="form-control" id="c_email_address" name="c_email_address" placeholder="Email Aktif">
-                </div>
-                <div class="col-md-6">
+                <div class="col-md-12">
                   <label for="c_phone" class="text-black">Phone <span class="text-danger">*</span></label>
                   <input type="text" class="form-control" id="c_phone" name="c_phone" placeholder="No. Telp / Whatsapp">
                 </div>
