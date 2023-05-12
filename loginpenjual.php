@@ -2,7 +2,7 @@
 session_start();
 
 if (isset($_SESSION["login"])) {
-	header("Location: index.php");
+	header("Location: indexp.php");
 	exit;
 }
 
@@ -20,7 +20,7 @@ if (isset($_POST["login"])) {
 		// 	header("Location: index.php");
 		// 	exit;
 		$_SESSION["login"] = true;
- 		header("Location: index.php");
+ 		header("Location: indexp.php");
 	}
 
 	$error = true;
@@ -49,7 +49,7 @@ if (isset($_POST["login"])) {
                 <hr>
                 <p>SALE ME</p>
                 <label for="">Email</label>
-                <input type="text" name="email" id="email" required autocomplete="off" placeholder="saleme@gmail.com">
+                <input type="email" name="email" id="email" required autocomplete="off" placeholder="saleme@gmail.com">
                 <label for="">Password</label>
                 <input type="password" name="password" id="password" required placeholder="Password">
 
@@ -65,7 +65,7 @@ if (isset($_POST["login"])) {
                     <a href="loginpembeli.php">or Login as Buyer</a>
                 </p>
                 <p>
-                    <a href="daftarpembeli.php">New? SignUp Here</a>
+                    <a href="daftarpenjual.php">New? SignUp Here</a>
                 </p>
             </form>
         </div>
