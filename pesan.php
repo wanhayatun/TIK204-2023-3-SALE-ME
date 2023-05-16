@@ -1,29 +1,47 @@
 <?php 
 session_start();
 if (!isset($_SESSION["login"])) {
-	header("Location: loginpenjual.php");
+	header("Location: loginpembeli.php");
 	exit;
 }
 require 'functions.php';
 
 if (isset($_POST["submit"])) {
 
-	if(tambahproduk($_POST) > 0 ) {
+	if(pesan($_POST) > 0 ) {
 		echo "
 		<script>
-			alert('Data Berhasil Ditambah');
-			document.location.href = 'indexp.php';
+			alert('Pesanan Berhasil');
+			document.location.href = 'thankyou.php';
 		</script>
 		";
 	} 
-    else {
-		echo "
-		<script>
-			alert('Data Gagal Ditambah');
-			document.location.href = 'indexp.php';
-		</script>
-		";
-	}
+  //   else {
+	// 	echo "
+	// 	<script>
+	// 		alert('Pesanan Gagal');
+	// 		document.location.href = 'index.php';
+	// 	</script>
+	// 	";
+	// }
+}
+
+// $perhalaman = 10;
+// $jumlah = count(query("SELECT * FROM product"));
+// $jumlahhalaman = ceil($jumlah / $perhalaman);
+// // // if (isset($_GET["page"])) {
+// // // $halaktif = $_GET["page"];
+// // // } else {
+// // // 	$halaktif = 1;
+// // // }
+// $halaktif = (isset($_GET["page"])) ? $_GET["page"] : 1;
+// $awaldata = ($perhalaman * $halaktif) - $perhalaman;
+
+$id = $_GET["id"];
+$product = query("SELECT * FROM product WHERE id = $id")[0];
+
+if (isset($_POST["search"])) {
+	$data = search($_POST["keyword"]);
 }
 ?>
 
@@ -52,23 +70,27 @@ if (isset($_POST["submit"])) {
           <div class="row align-items-center">
 
             <div class="col-6 col-md-4 order-2 order-md-1 site-search-icon text-left">
-              <form action="" method="" class="site-block-top-search">
+              <form action="" method="POST" class="site-block-top-search">
                 <span class="icon icon-search2"></span>
-                <input type="" name="" class="form-control border-0" placeholder="Search">
+                <input type="text" name="keyword" class="form-control border-0" placeholder="Search">
               </form>
+              <!-- <form action="" method="POST" class="search">
+                <input type="text" name="keyword" size="25" placeholder="Cari Tanggal, Nama, No SPPD" autocomplete="off">
+                <button type="submit" name="search">&#x1F50D</button>
+              </form> -->
             </div>
 
             <div class="col-12 mb-3 mb-md-0 col-md-4 order-1 order-md-2 text-center">
               <div class="site-logo">
-                <a href="indexp.php" class="js-logo-clone"><strong>Sale Me</strong></a>
+                <a href="index.php" class="js-logo-clone"><strong>Sale Me</strong></a>
               </div>
             </div>
 
             <div class="col-6 col-md-4 order-3 order-md-3 text-right">
               <div class="site-top-icons">
                 <ul>
-                  <li><a href="loginpenjual.php"><span class="icon icon-person"></span></a></li>
-                  <li><a href="logoutp.php" class="btn btn-primary text-white">logout</a></li>
+                  <li><a href="loginpembeli.php"><span class="icon icon-person"></span></a></li>
+                  <li><a href="logout.php" class="btn btn-primary text-white">logout</a></li>
                   <li class="d-inline-block d-md-none ml-md-0"><a href="#" class="site-menu-toggle js-menu-toggle"><span class="icon-menu"></span></a></li>
                 </ul>
               </div> 
@@ -81,83 +103,63 @@ if (isset($_POST["submit"])) {
         <div class="container">
           <ul class="site-menu js-clone-nav d-none d-md-block">
             <li class="active">
-              <a href="indexp.php">Produk</a>
+              <a href="index.php">Home</a>
             </li>
             <li>
-              <a href="order.php">Order</a>
+              <a href="about.php">About</a>
             </li>
             <!-- <li><a href="shop.php">Shop</a></li> -->
-            <li><a href="contactp.php">Contact</a></li>
+            <li><a href="contact.php">Contact</a></li>
           </ul>
         </div>
       </nav>
     </header>
-<!-- 
-    <div class="site-blocks-cover" style="background-image: url(images/cover1.jpg);" data-aos="fade">
-      <div class="container">
-        <div class="row align-items-start align-items-md-center justify-content-end">
-          <div class="col-md-5 text-center text-md-left pt-5 pt-md-0">
-            <h1 class="mb-2 text-white">All Products on Discount!</h1>
-            <div class="intro-text text-center text-md-left">
-              <p class="mb-4 text-white">"Waste Less, Save More, Live More"</p>
-              <p>
-                <a href="shop.php" class="btn btn-sm btn-primary">Shop Now</a>
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div> -->
-<!-- 
-    <div class="site-section site-blocks-1">
+
+    <div class="bg-light py-3">
       <div class="container">
         <div class="row">
-          <div class="col-2">
-            One of six columns
-          </div>
-          <div class="col-2">
-            One of six columns
-          </div>
-          <div class="col-2">
-            One of six columns
-          </div>
-          <div class="col-2">
-            One of six columns
-          </div>
-          <div class="col-2">
-            One of six columns
-          </div>
-          <div class="col-2">
-            One of six columns
-          </div>
+          <div class="col-md-12 mb-0"><a href="index.php">Home</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">Checkout</strong></div>
         </div>
       </div>
-    </div> -->
-    
-    <div class="container pt-4">
-        <h2>Add Product</h2>
-        <form action="" method="POST" enctype='multipart/form-data'>
+    </div>
+
+  
+  <div class="site-wrap">
+    <header class="site-navbar" role="banner">
+      <div class="site-navbar-top">
+      <div class="container pt-4">
+        <h2>Order</h2>
+
+        <form action="" method="POST">
             <div class="mb-3">
-                <label for="" class="form-label">Gambar Produk</label>
-                <input class="form-control" type="file" name="gambar" id="gambar" required>
+                <label for="" class="form-label">Nama Produk</label>
+                <input class="form-control" type="text" readonly class="form-control-plaintext" name="nama_produk" id="nama_produk" value="<?= $product["nama"] ?>">
             </div>
             <div class="mb-3">
-                <label for="">Nama Produk</label>
-                <input class="form-control" type="text" id="nama" name="nama" required>
+                <label for="" class="form-label">Harga Produk</label>
+                <input class="form-control" type="number" readonly class="form-control-plaintext" name="harga_produk" id="harga_produk" value="<?= $product["harga"] ?>">
             </div>
             <div class="mb-3">
-                <label for="">Harga Produk</label>
-                <input class="form-control" type="text" id="rupiah" name="harga" required>
+                <label for="" class="form-label">Nama</label>
+                <input class="form-control" type="text" name="nama" id="nama" required>
             </div>
             <div class="mb-3">
-                <label for="">Tanggal Kadaluarsa</label>
-                <input class="form-control" type="date" id="kadaluarsa" name="kadaluarsa" required>
+                <label for="">Alamat</label>
+                <input class="form-control" type="text" id="alamat" name="alamat" required>
+            </div>
+            <div class="mb-3">
+                <label for="">No. Telepon</label>
+                <input class="form-control" type="text" id="telepon" name="telepon" required>
+            </div>
+            <div class="mb-3">
+                <label for="">Note</label>
+                <input class="form-control" type="text" id="note" name="note">
             </div>
             
             <button type="submit" name="submit" class="btn btn-primary">Save</button>
         </form>
     </div>
-
+      </div>  
 
     <footer class="site-footer border-top">
       <div class="container">
@@ -173,20 +175,8 @@ if (isset($_POST["submit"])) {
         </div>
       </div>
     </footer>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
-                  <script>
-                    var rupiahInput = document.getElementById('rupiah');
-                    rupiahInput.addEventListener('input', function(e) {
-                      // Menghilangkan semua karakter kecuali angka
-                      var input = e.target.value.replace(/\D/g, '');
+  </div>
 
-                      // Format input menjadi format Rupiah
-                      var formattedInput = 'Rp ' + numeral(input).format('0,0');
-
-                      // Set nilai input dengan format Rupiah
-                      rupiahInput.value = formattedInput;
-                    });
-                  </script>
   <script src="js/jquery-3.3.1.min.js"></script>
   <script src="js/jquery-ui.js"></script>
   <script src="js/popper.min.js"></script>
@@ -194,6 +184,7 @@ if (isset($_POST["submit"])) {
   <script src="js/owl.carousel.min.js"></script>
   <script src="js/jquery.magnific-popup.min.js"></script>
   <script src="js/aos.js"></script>
+
   <script src="js/main.js"></script>
     
   </body>

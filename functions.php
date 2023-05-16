@@ -71,6 +71,26 @@ function tambahproduk($product){
 }
 
 
+
+function pesan($pesan){
+	global $conn;
+	// $id = $product["id"];
+	$nama = htmlspecialchars($pesan["nama"]); 
+	$alamat = htmlspecialchars($pesan["alamat"]); 
+	$telepon = htmlspecialchars($pesan["telepon"]);
+	$note = htmlspecialchars($pesan["note"]); 
+	$nama_produk = htmlspecialchars($pesan["nama_produk"]);
+	$harga_produk = htmlspecialchars($pesan["harga_produk"]);
+
+	$query = "INSERT INTO pesan 
+	VALUES ('', '6', '$nama', '$alamat', '$telepon', '$note', '$nama_produk', '$harga_produk')";
+	mysqli_query($conn, $query);
+
+	return mysqli_affected_rows($conn);
+}
+
+
+
 function upload(){
 	$namaFile = $_FILES['gambar']['name'];
 	$ukuranFile = $_FILES['gambar']['size'];

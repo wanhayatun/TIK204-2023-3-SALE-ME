@@ -6,6 +6,26 @@ if (!isset($_SESSION["login"])) {
 }
 require 'functions.php';
 
+if (isset($_POST["submit"])) {
+
+	if(pesan($_POST) > 0 ) {
+		echo "
+		<script>
+			alert('Pesanan Berhasil');
+			document.location.href = 'thankyou.php';
+		</script>
+		";
+	} 
+    else {
+		echo "
+		<script>
+			alert('Pesanan Gagal');
+			document.location.href = 'index.php';
+		</script>
+		";
+	}
+}
+
 // $perhalaman = 10;
 // $jumlah = count(query("SELECT * FROM product"));
 // $jumlahhalaman = ceil($jumlah / $perhalaman);
@@ -17,8 +37,8 @@ require 'functions.php';
 // $halaktif = (isset($_GET["page"])) ? $_GET["page"] : 1;
 // $awaldata = ($perhalaman * $halaktif) - $perhalaman;
 
-
-$product = query("SELECT * FROM product");
+$id = $_GET["id"];
+$product = query("SELECT * FROM product WHERE id = $id")[0];
 
 if (isset($_POST["search"])) {
 	$data = search($_POST["keyword"]);
@@ -51,6 +71,7 @@ if (isset($_POST["search"])) {
 
             <div class="col-6 col-md-4 order-2 order-md-1 site-search-icon text-left">
               <form action="" method="POST" class="site-block-top-search">
+              <input type="hidden" name="id" value="<?= $product["id"]; ?>">
                 <span class="icon icon-search2"></span>
                 <input type="text" name="keyword" class="form-control border-0" placeholder="Search">
               </form>
@@ -119,8 +140,8 @@ if (isset($_POST["search"])) {
               
               <div class="form-group row">
                 <div class="col-md-12">
-                  <label for="c_fname" class="text-black">Nama <span class="text-danger">*</span></label>
-                  <input type="text" class="form-control" id="c_fname" name="c_fname" placeholder="Masukkan Nama">
+                  <label for="" class="text-black">Nama <span class="text-danger">*</span></label>
+                  <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan Nama">
                 </div>
                 <!-- <div class="col-md-6">
                   <label for="c_lname" class="text-black">Last Name <span class="text-danger">*</span></label>
@@ -132,8 +153,8 @@ if (isset($_POST["search"])) {
 
               <div class="form-group row">
                 <div class="col-md-12">
-                  <label for="c_address" class="text-black">Alamat <span class="text-danger">*</span></label>
-                  <input type="text" class="form-control" id="c_address" name="c_address" placeholder="Masukkan Alamat">
+                  <label for="" class="text-black">Alamat <span class="text-danger">*</span></label>
+                  <input type="text" class="form-control" id="alamat" name="alamat" placeholder="Masukkan Alamat" required>
                 </div>
               </div>
 <!-- 
@@ -144,8 +165,8 @@ if (isset($_POST["search"])) {
 
               <div class="form-group row mb-5">
                 <div class="col-md-12">
-                  <label for="c_phone" class="text-black">Phone <span class="text-danger">*</span></label>
-                  <input type="text" class="form-control" id="c_phone" name="c_phone" placeholder="No. Telp / Whatsapp">
+                  <label for="" class="text-black">Phone <span class="text-danger">*</span></label>
+                  <input type="text" class="form-control" id="telepon" name="telepon" placeholder="No. Telp / Whatsapp" required>
                 </div>
               </div>
 
@@ -166,8 +187,8 @@ if (isset($_POST["search"])) {
               
 
               <div class="form-group">
-                <label for="c_order_notes" class="text-black">Order Notes</label>
-                <textarea name="c_order_notes" id="c_order_notes" cols="30" rows="5" class="form-control" placeholder="Tuliskan Catatan disini..."></textarea>
+                <label for="" class="text-black">Order Notes</label>
+                <textarea name="note" id="note" cols="30" rows="5" class="form-control" placeholder="Tuliskan Catatan disini..." required></textarea>
               </div>
 
             </div>
@@ -202,8 +223,8 @@ if (isset($_POST["search"])) {
                     </thead>
                     <tbody>
                       <tr>
-                        <td>Jus <strong class="mx-2">x</strong>   1</td>
-                        <td>Rp. 10.000,00</td>
+                        <td><?= $product["nama"] ?><strong class="mx-2">x</strong>   1</td>
+                        <td>Rp. <?= $product["harga"] ?></td>
                       </tr>
                       <tr>
                         <td class="text-black font-weight-bold"><strong>Order Total</strong></td>
@@ -212,7 +233,7 @@ if (isset($_POST["search"])) {
                     </tbody>
                   </table>
 
-                  <div class="border p-3 mb-3">
+                  <!-- <div class="border p-3 mb-3">
                     <h3 class="h6 mb-0"><a class="d-block" data-toggle="collapse" href="#collapsebank" role="button" aria-expanded="false" aria-controls="collapsebank">Direct Bank Transfer</a></h3>
 
                     <div class="collapse" id="collapsebank">
@@ -220,9 +241,9 @@ if (isset($_POST["search"])) {
                         <p class="mb-0">Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order won’t be shipped until the funds have cleared in our account.</p>
                       </div>
                     </div>
-                  </div>
+                  </div> -->
 
-                  <div class="border p-3 mb-3">
+                  <!-- <div class="border p-3 mb-3">
                     <h3 class="h6 mb-0"><a class="d-block" data-toggle="collapse" href="#collapsecheque" role="button" aria-expanded="false" aria-controls="collapsecheque">Cheque Payment</a></h3>
 
                     <div class="collapse" id="collapsecheque">
@@ -240,11 +261,9 @@ if (isset($_POST["search"])) {
                         <p class="mb-0">Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order won’t be shipped until the funds have cleared in our account.</p>
                       </div>
                     </div>
-                  </div>
+                  </div> -->
 
-                  <div class="form-group">
-                    <button class="btn btn-primary btn-lg py-3 btn-block" onclick="window.location='thankyou.php'">Place Order</button>
-                  </div>
+                  <button type="submit" name="submit" class="btn btn-primary">Order</button>
 
                 </div>
               </div>
@@ -252,7 +271,7 @@ if (isset($_POST["search"])) {
 
           </div>
         </div>
-        <!-- </form> -->
+      </form>
       </div>
     </div>
 

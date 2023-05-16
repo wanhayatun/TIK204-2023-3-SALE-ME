@@ -9,10 +9,10 @@ if (isset($_SESSION["login"])) {
 require 'functions.php';
 
 if (isset($_POST["login"])) {
-	$email = $_POST["email"];
+	$nama = $_POST["nama"];
 	$password = $_POST["password"];
 
-	$result = mysqli_query($conn, "SELECT * FROM seller WHERE email = '$email' AND password = '$password'");
+	$result = mysqli_query($conn, "SELECT * FROM seller WHERE nama = '$nama' AND password = '$password'");
 
 	if(mysqli_num_rows($result) === 1){
 		// $row = mysqli_fetch_assoc($result);
@@ -48,13 +48,13 @@ if (isset($_POST["login"])) {
                 <h1>Login as Seller</h1>
                 <hr>
                 <p>SALE ME</p>
-                <label for="">Email</label>
-                <input type="email" name="email" id="email" required autocomplete="off" placeholder="saleme@gmail.com">
+                <label for="">Username</label>
+                <input type="text" name="nama" id="nama" required autocomplete="off" placeholder="saleme@gmail.com">
                 <label for="">Password</label>
                 <input type="password" name="password" id="password" required placeholder="Password">
 
                 <?php  if(isset($error)) : ?>
-                <p>Email Atau Password salah</p>
+                <p>Username Atau Password salah</p>
                 <?php endif; ?>
 
                 <button type="submit" name="login" value="Login">Login</button>

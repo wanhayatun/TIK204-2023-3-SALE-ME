@@ -18,7 +18,7 @@ require 'functions.php';
 // $awalproduct = ($perhalaman * $halaktif) - $perhalaman;
 
 
-$product = query("SELECT * FROM pesan");
+$pesan = query("SELECT * FROM pesan");
 
 if (isset($_POST["search"])) {
 	$product = search($_POST["keyword"]);
@@ -139,6 +139,8 @@ if (isset($_POST["search"])) {
           <thead class="table-primary">
             <tr class="text-center">
               <th>No.</th>
+              <th>Nama Produk</th>
+              <th>Harga Produk</th>
               <th>Nama</th>
               <th>Alamat</th>
               <th>Telepon</th>
@@ -149,9 +151,11 @@ if (isset($_POST["search"])) {
           <tbody>
             
             <?php $no = 1; ?>
-            <?php foreach($product as $row) : ?>
+            <?php foreach($pesan as $row) : ?>
             <tr class="text-center">
               <td><?= $no ?></td>
+              <td><?= $row["nama_produk"] ?></td>
+              <td><?= $row["harga_produk"] ?></td>
               <td><?= $row["nama"] ?></td>
               <td><?= $row["alamat"] ?></td>
               <td><?= $row["telepon"] ?></td>

@@ -14,14 +14,15 @@ if (isset($_POST["submit"])) {
 			document.location.href = 'loginpenjual.php';
 		</script>
 		";
-	} else {
-		echo "
-		<script>
-			alert('Data Gagal Ditambahkan');
-			document.location.href = 'daftarpenjual.php';
-		</script>
-		";
-	}
+	} 
+    // else {
+	// 	echo "
+	// 	<script>
+	// 		alert('Data Gagal Ditambahkan');
+	// 		document.location.href = 'daftarpenjual.php';
+	// 	</script>
+	// 	";
+	// }
 }
 ?>
 <!DOCTYPE html>
@@ -44,6 +45,8 @@ if (isset($_POST["submit"])) {
                 <h1>Daftar</h1>
                 <hr>
                 <p>SALE ME</p>
+                <label for="">Username</label>
+                <input type="text" name="nama" id="nama" required autocomplete="off" placeholder="Nama Toko">
                 <label for="">Email</label>
                 <input type="email" name="email" id="email" required autocomplete="off" placeholder="example@gmail.com">
                 <label for="">Password</label>
