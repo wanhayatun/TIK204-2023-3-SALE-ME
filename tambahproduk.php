@@ -1,9 +1,9 @@
 <?php 
 session_start();
-// if (!isset($_SESSION["login"])) {
-// 	header("Location: loginpenjual.php");
-// 	exit;
-// }
+if (!isset($_SESSION["login"])) {
+	header("Location: loginpenjual.php");
+	exit;
+}
 require 'functions.php';
 
 if (isset($_POST["submit"])) {
@@ -147,7 +147,7 @@ if (isset($_POST["submit"])) {
             </div>
             <div class="mb-3">
                 <label for="">Harga Produk</label>
-                <input class="form-control" type="number" id="harga" name="harga" required>
+                <input class="form-control" type="text" id="rupiah" name="harga" required>
             </div>
             <div class="mb-3">
                 <label for="">Tanggal Kadaluarsa</label>
@@ -173,7 +173,20 @@ if (isset($_POST["submit"])) {
         </div>
       </div>
     </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
+                  <script>
+                    var rupiahInput = document.getElementById('rupiah');
+                    rupiahInput.addEventListener('input', function(e) {
+                      // Menghilangkan semua karakter kecuali angka
+                      var input = e.target.value.replace(/\D/g, '');
 
+                      // Format input menjadi format Rupiah
+                      var formattedInput = 'Rp ' + numeral(input).format('0,0');
+
+                      // Set nilai input dengan format Rupiah
+                      rupiahInput.value = formattedInput;
+                    });
+                  </script>
   <script src="js/jquery-3.3.1.min.js"></script>
   <script src="js/jquery-ui.js"></script>
   <script src="js/popper.min.js"></script>
