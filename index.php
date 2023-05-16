@@ -158,7 +158,7 @@ if (isset($_POST["search"])) {
                 <h6 class="card-text text-primary font-weight-bold">Rp. <?= $row["harga"] ?></h6>
                 <!-- <h6>expired in 3 days</h6> -->
                 <div class="text-center">
-                  <a href="checkout.php" class="btn btn-primary" role="button">Buy</a>
+                  <a href="pesan.php?id=<?= $row["id"]; ?>" class="btn btn-primary" role="button">Buy</a>
                 </div>
               </div>
             </div>
